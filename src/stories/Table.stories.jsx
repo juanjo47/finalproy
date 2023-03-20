@@ -2,20 +2,19 @@ import React from 'react';
 
 import Table from './Table';
 
-// More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: 'Componentes/Table',
   component: Table,
   argTypes:{
-    ColN: {type: "number"}, RowN: {type: "number"},
+    ColN: {type: "number", defaultValue: 3 }, 
+    RowN: {type: "number", defaultValue: 2 },
+    array: {type: "array", defaultValue: ["n","1"]}
   }
 };
 
-// More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template = (args) => <Table {...args} />;
 
 export const CreateTable = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
 CreateTable.args = {
   striped: true,
   responsive: true

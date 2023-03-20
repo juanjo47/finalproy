@@ -2,25 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DataTable from 'react-data-table-component';
 
-function Table({ RowsN, ColN, array}) {
+function Table({ RowN, ColN, array}) {
   let n = -1
   var col = []
   let auxc = ColN
-  while(auxc > 0){
-    auxc = auxc--
-    if(array.length === auxc)
-    {
-      return array
-    }
-    else {
-      if (ColN > array.length)
-      {
-          return Error('insuficientes headers')
+  let oficial, s=0
+  if(array.length === auxc)
+  {
+      
+      while(auxc > 0){
+        auxc = auxc--
+        s = s++
+        console.log(array(s))
+        oficial.concat('"name":array("s")') 
+        return oficial 
       }
-      else{return Error('tiene demasiados headers') }
-    }
+    
   }
-  let auxr = RowsN
+  else {
+    if (ColN > array.length)
+    {
+        return Error('insuficientes headers')
+    }
+    else{return Error('tiene demasiados headers') }
+  }
+  let auxr = RowN
   while(auxr > 0){
     auxr = auxr--
     n = n + 1
@@ -29,20 +35,20 @@ function Table({ RowsN, ColN, array}) {
   }
   
   return <DataTable
-            columns={array} 
+            columns={oficial} 
             data={col}
             />
 }
 
 Table.propTypes = {
-  RowsN: PropTypes.number,
+  RowN: PropTypes.number,
   ColN:PropTypes.number,
   array: PropTypes.array,
 }
 Table.defaultProps = {
-  RowsN: 1,
-  ColN: 1,
-  array: ['Nº'],
+  RowN: 2,
+  ColN: 3,
+  array: ['Nº','1','2'],
   responsive: true,
   striped: true
 };
